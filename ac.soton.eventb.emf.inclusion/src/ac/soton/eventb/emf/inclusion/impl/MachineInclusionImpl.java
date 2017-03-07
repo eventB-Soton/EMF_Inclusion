@@ -21,7 +21,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
-
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eventb.emf.core.impl.AbstractExtensionImpl;
 
 import org.eventb.emf.core.machine.Machine;
@@ -42,6 +42,29 @@ import org.eventb.emf.core.machine.Machine;
  * @generated
  */
 public class MachineInclusionImpl extends AbstractExtensionImpl implements MachineInclusion {
+	
+
+	/**
+	 * The default value of the '{@link #getExtensionId() <em>Extension Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExtensionId()
+	 * @generated CUSTOM
+	 * @ordered
+	 */
+	protected static final String EXTENSION_ID_EDEFAULT = InclusionPackage.INCLUSION_EXTENSION_ID+".MachineInclusion";
+
+	/**
+	 * The cached value of the '{@link #getExtensionId() <em>Extension Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExtensionId()
+	 * @generated CUSTOM
+	 * @ordered
+	 */
+	protected String extensionId = EXTENSION_ID_EDEFAULT+"."+EcoreUtil.generateUUID();
+	
+	
 	/**
 	 * The cached value of the '{@link #getAbstractMachine() <em>Abstract Machine</em>}' reference.
 	 * <!-- begin-user-doc -->
