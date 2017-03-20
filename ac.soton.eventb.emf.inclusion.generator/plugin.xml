@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+  <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="popup:fr.systerel.explorer.navigator.view">
+         <menu
+               id="ac.soton.eventb.emf.inclusion.menu"
+               label="Machine Inclusion"
+               tooltip="Machine Inclusion menu">
+            <command
+                  commandId="ac.soton.eventb.emf.inclusion.commands.include"
+                  label="Include"
+                  style="push"
+                  tooltip="Flatten Included Machines" >            
+                   <visibleWhen
+                     checkEnabled="false">
+                  <with
+                        variable="selection">
+                     <iterate
+                           ifEmpty="false">
+                     <adapt type="org.eclipse.core.resources.IResource">
+              <test property="org.eclipse.core.resources.extension" value="bumx" />
+         </adapt>
+                     </iterate>
+                  </with>
+               </visibleWhen>
+            </command>
+          </menu>
+      </menuContribution>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.commands">
+     <category
+        description="Commands associated with Machine Inclusion"
+        id="ac.soton.eventb.emf.inclusion.commands"
+        name="Machine Inclusion Commands">
+      </category>
+      <command
+            categoryId="ac.soton.eventb.emf.inclusion.commands"
+            defaultHandler="ac.soton.emf.translator.handler.TranslateHandler"
+            description="flatten included machines"        
+             id="ac.soton.eventb.emf.inclusion.commands.include"
+            name="Include Machines">
+      </command>
+   </extension>
+   
+
+   <extension
+         point="ac.soton.emf.translators">
+      <translator
+            adapter_class="ac.soton.eventb.emf.inclusion.generator.InclusionAdaptor"
+            command_id="ac.soton.eventb.emf.inclusion.commands.include"
+            name="Inclusion"
+            root_source_class="Machine"
+            source_package="http://emf.eventb.org/models/core/machine/2014"
+            translator_id="ac.soton.eventb.emf.inclusion.translator">
+      </translator>
+   </extension>
+   <extension
+         point="ac.soton.emf.translator.rulesets">
+      <ruleset
+            name="InclusionRules"
+            translator_id="ac.soton.eventb.emf.inclusion.translator">
+         <rule
+               name="MachineInclusionRule"
+               rule_class="ac.soton.eventb.emf.inclusion.generator.rules.MachineInclusionRule"
+               source_class="MachineInclusion"
+               source_package="http://soton.ac.uk/models/eventb/inclusion/2017">
+         </rule>
+      </ruleset>
+   </extension>
+
+</plugin>
