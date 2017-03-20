@@ -28,4 +28,24 @@
             class="ac.soton.eventb.emf.inclusion.provider.InclusionItemProviderAdapterFactory$CoreChildCreationExtender"/>
    </extension>
 
+   <extension
+         point="org.eventb.emf.persistence.synchroniser">
+      <emfPackage
+            name="Machine Inclusion Package"
+            nsURI="http://soton.ac.uk/models/eventb/featureinclusion/2017">
+         <synchroniser
+               emf_class="MachineInclusion"
+               name="Machine lncusion Synchroniser"
+               rodin_id="ac.soton.eventb.emf.core.extension.persistence.serialisedExtension"
+               synchroniser_class="ac.soton.eventb.emf.core.extension.persistence.SerialisedExtensionSynchroniser">
+         </synchroniser>
+         <synchroniser
+               emf_class="EventSynchronisation"
+               name="Event Synchronisation Synchroniser"
+               rodin_id="ac.soton.eventb.emf.core.extension.persistence.serialisedExtension"
+               synchroniser_class="ac.soton.eventb.emf.core.extension.persistence.SerialisedExtensionSynchroniser">
+         </synchroniser>
+      </emfPackage>
+   </extension>
+   
 </plugin>

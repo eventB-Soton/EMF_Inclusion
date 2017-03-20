@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eventb.emf.core.impl.AbstractExtensionImpl;
 
 import org.eventb.emf.core.machine.Event;
@@ -65,6 +65,26 @@ public class EventSynchronisationImpl extends AbstractExtensionImpl implements E
 	 */
 	protected String prefix = PREFIX_EDEFAULT;
 
+	/**
+	 * The default value of the '{@link #getExtensionId() <em>Extension Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExtensionId()
+	 * @generated CUSTOM
+	 * @ordered
+	 */
+	protected static final String EXTENSION_ID_EDEFAULT = InclusionPackage.INCLUSION_EXTENSION_ID+".EventSynchronisation";
+
+	/**
+	 * The cached value of the '{@link #getExtensionId() <em>Extension Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExtensionId()
+	 * @generated CUSTOM
+	 * @ordered
+	 */
+	protected String extensionId = EXTENSION_ID_EDEFAULT+"."+EcoreUtil.generateUUID();
+	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
