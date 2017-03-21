@@ -71,7 +71,7 @@ public class MachineInclusionRule extends AbstractRule implements IRule{
 		
 		Project proj = findProject(sourceElement);
 		
-		Machine abstractFlattenedMachine = Make.machine(sourceMachine.getName(), "");
+		Machine abstractFlattenedMachine = Make.machine(sourceMachine.getName()+"_flattened", "");
 		
 		//Clone the source machine
 		abstractFlattenedMachine.getRefinesNames().addAll(copyMachineRefinesNames(sourceMachine));
