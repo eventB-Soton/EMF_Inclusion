@@ -32,7 +32,7 @@
          point="org.eventb.emf.persistence.synchroniser">
       <emfPackage
             name="Machine Inclusion Package"
-            nsURI="http://soton.ac.uk/models/eventb/featureinclusion/2017">
+            nsURI="http://soton.ac.uk/models/eventb/inclusion/2017">
          <synchroniser
                emf_class="MachineInclusion"
                name="Machine lncusion Synchroniser"
