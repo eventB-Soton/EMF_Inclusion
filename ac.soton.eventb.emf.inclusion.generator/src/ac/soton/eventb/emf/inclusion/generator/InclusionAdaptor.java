@@ -11,7 +11,9 @@
 package ac.soton.eventb.emf.inclusion.generator;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
@@ -29,6 +31,7 @@ import org.eventb.emf.core.EventBNamedCommentedActionElement;
 import org.eventb.emf.core.EventBNamedCommentedComponentElement;
 import org.eventb.emf.core.EventBNamedCommentedElement;
 import org.eventb.emf.core.EventBNamedCommentedPredicateElement;
+import org.eventb.emf.core.EventBObject;
 import org.eventb.emf.core.context.Context;
 import org.eventb.emf.core.machine.Event;
 import org.eventb.emf.persistence.AttributeIdentifiers;
@@ -47,6 +50,45 @@ import ac.soton.emf.translator.configuration.IAdapter;
 
 public class InclusionAdaptor  implements IAdapter {
 
+	/**
+	 * used to store the order position of extensions
+	 */
+	private Map<String,Integer> extensionOrder = new HashMap<String,Integer>();
+	
+	/**
+	 * 
+	 * @param object
+	 * @return
+	 */
+	protected Integer getExtensionPosition(Object object) {
+		Attribute generatorAttribute = ((EventBElement)object).getAttributes().get(AttributeIdentifiers.GENERATOR_ID_KEY);
+		String generatorID = (String) (generatorAttribute==null? null : generatorAttribute.getValue());
+		Integer v_xod = extensionOrder.get(generatorID);
+		if (v_xod==null) v_xod = extensionOrder.size(); // not an extension => user entered stuff comes last
+		return v_xod;
+	}
+	
+	
+	/**
+	 * 
+	 * @param sourceElement
+	 */
+	@Override	
+	public void initialiseAdapter(Object sourceElement){
+		if (sourceElement instanceof EventBObject){
+			//set up map of extensions ids and their positions
+			EventBObject component = ((EventBObject) sourceElement).getContaining(CorePackage.Literals.EVENT_BNAMED_COMMENTED_COMPONENT_ELEMENT);
+			int i=0;
+			for (EObject ae : component.getAllContained(CorePackage.Literals.ABSTRACT_EXTENSION, true)){
+				if (ae !=null) {
+					String id = ((AbstractExtension)ae).getExtensionId();
+					extensionOrder.put(id, i++);
+				}
+			}
+		}
+	}
+
+	
 	/**
 	 * returns a URI for..
 	 *  a Rodin machine (.bum) or..
@@ -76,7 +118,7 @@ public class InclusionAdaptor  implements IAdapter {
 	 */
 	@Override
 	public boolean inputFilter(Object object,  Object sourceID) {
-		return !(object instanceof EventBElement && 
+		return (object instanceof EventBElement && 
 				sourceID.equals(
 					((EventBElement)object).getAttributes().get(AttributeIdentifiers.GENERATOR_ID_KEY))
 				);
@@ -89,23 +131,22 @@ public class InclusionAdaptor  implements IAdapter {
 	public boolean outputFilter(TranslationDescriptor translationDescriptor) {
 		
 		//filter any new elements that are already there 	
-		if (translationDescriptor.parent==null) return false;
-		Object featureValue = translationDescriptor.parent.eGet(translationDescriptor.feature);
-		if (featureValue instanceof EList){
-			EList<?> list = (EList<?>)featureValue;
-			for (Object el : list){
-				if (match(el,translationDescriptor.value)) return true;
+		if (translationDescriptor.parent!=null) { //if no parent we cannot check
+			Object featureValue = translationDescriptor.parent.eGet(translationDescriptor.feature);
+			if (featureValue instanceof EList){
+				EList<?> list = (EList<?>)featureValue;
+				for (Object el : list){
+					if (match(el,translationDescriptor.value)) return false;
+				}
+			}
+			// filter any new values which are already present by event extension
+			if (translationDescriptor.parent instanceof Event){
+				for (Object el : getExtendedValues((Event)translationDescriptor.parent,translationDescriptor.feature)){
+					if (match(el,translationDescriptor.value)) return false;
+				}
 			}
 		}
-		
-		// filter any new values which are already present by event extension
-		if (translationDescriptor.parent instanceof Event){
-			for (Object el : getExtendedValues((Event)translationDescriptor.parent,translationDescriptor.feature)){
-				if (match(el,translationDescriptor.value)) return true;
-			}
-		}
-
-		return false;
+		return true;
 	}
 
 
@@ -216,6 +257,17 @@ public class InclusionAdaptor  implements IAdapter {
 	}
 	
 	/**
+	 * @param v
+	 * @return
+	 */
+	protected int getPriority(Object object) {
+		Attribute priorityAttribute= ((EventBElement)object).getAttributes().get(AttributeIdentifiers.PRIORITY_KEY);
+		Integer pri = (Integer) (priorityAttribute==null? null : priorityAttribute.getValue());
+		if (pri==null) pri = 0; // no priority => user stuff at priority 0
+		return pri;
+	}
+	
+	/**
 	 * adds attributes to record:
 	 * a) the priority of this element for ordering
 	 * 
@@ -233,58 +285,41 @@ public class InclusionAdaptor  implements IAdapter {
 			element.getAttributes().put(AttributeIdentifiers.PRIORITY_KEY,pri);
 		}
 	}
-	
 
-	
-	
-	
-	/*
-	 *The following deals with maintaining the order of generated elements to match the order of
-	 *the source element within its containment e.g. statemachine within extensions.
-	 *probably not relevant for import/export?
-	 *
-	
-		private Map<String, Integer> extensionOrder = new HashMap<String,Integer>();
-		
-		// from early on in generate...
-		//set up map of extensions ids and their positions
-			EventBObject component = sourceElement.getContaining(CorePackage.Literals.EVENT_BNAMED_COMMENTED_COMPONENT_ELEMENT);
-			int i=0;
-			for (EObject ae : component.getAllContained(CorePackage.Literals.ABSTRACT_EXTENSION, true)){
-				if (ae !=null) {
-					String id = ((AbstractExtension)ae).getExtensionId();
-					extensionOrder.put(id, i++);
-				}
+
+	/**
+	 * 
+	 * @see ac.soton.emf.translator.configuration.IAdapter#getPos(org.eclipse.emf.common.util.EList, int)
+	 * 
+	 * 
+	 * 
+	 */
+	@Override
+	public int getPos(List<?> list, Object object) {
+		//calculate the correct index - i.e. after any higher priority elements and
+		//after stuff translated by earlier extensions which have the same priority
+		int pri = getPriority(object);
+		int pos = 0;
+		int xod = getExtensionPosition(object);
+		for (int i=0; i<list.size(); i++){
+			Object v = list.get(i);
+			if(v instanceof EventBElement){
+				
+				//calculate extension order od of this value
+				Integer v_xod = getExtensionPosition(v);
+				
+				//calculate priority order of this value
+				Integer v_pri = getPriority(v);
+				
+				//priority order = highest 1..10,0,-1..-10
+				if ((v_pri>0 && (pri<=0 || pri > v_pri )) || (v_pri < 1 && pri < v_pri ) || (v_pri==pri && v_xod<xod)){
+					pos = i+1;
+				};
+				
 			}
-			
-			
-			//from place generated...
-								//add the new value to the list at the correct index - i.e. after any higher priority elements and
-								//after stuff generated by earlier extensions which has the same priority
-								int pos = 0;
-								for (int i=0; i<((EList)featureValue).size(); i++){
-									Object v = ((EList)featureValue).get(i);
-									if(v instanceof EventBElement){
-										Attribute at = ((EventBElement)v).getAttributes().get(AttributeIdentifiers.GENERATOR_ID_KEY);
-										String gb = (String) (at==null? null : at.getValue());
-										Integer od = extensionOrder.get(gb);
-										if (od==null) od = extensionOrder.size(); // not an extension => user entered stuff comes last
-										at = ((EventBElement)v).getAttributes().get(AttributeIdentifiers.PRIORITY_KEY);
-										Integer pr = (Integer) (at==null? null : at.getValue());
-										if (pr==null) pr = 0; // no priority => user stuff at priority 0
-										//priority order = highest 1..10,0,-1..-10
-										Integer exo = extensionOrder.containsKey(generatedByID)? extensionOrder.get(generatedByID) : 0;
-										if ((pr>0 && pr < pri) || (pr < 1 && pr > pri) || (pr==pri && od<=exo)){
-											pos = i+1;
-										};
-										
-									}
-								}
+		}
+		return pos;
+	}
 
-								((EList)featureValue).add(pos, generationDescriptor.value);
-			
- * 
- * 
- * 
-		*/
+
 }
