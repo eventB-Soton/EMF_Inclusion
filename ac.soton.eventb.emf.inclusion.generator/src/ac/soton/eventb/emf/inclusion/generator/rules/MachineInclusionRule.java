@@ -42,7 +42,7 @@ import org.eventb.emf.core.machine.Witness;
  * 
  * </p>
  * 
- * @author dd4g12
+ * @author Dana
  * @version
  * @see
  * @since
@@ -71,7 +71,7 @@ public class MachineInclusionRule extends AbstractRule implements IRule{
 		
 		Project proj = findProject(sourceElement);
 		
-		Machine abstractFlattenedMachine = Make.machine(sourceMachine.getName()+"_flattened", "");
+		Machine abstractFlattenedMachine = Make.machine(sourceMachine.getName(), "");//+"_flattened" //flattened suffix for coda
 		
 		//Clone the source machine
 		abstractFlattenedMachine.getRefinesNames().addAll(copyMachineRefinesNames(sourceMachine));
