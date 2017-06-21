@@ -15,10 +15,6 @@
       %featureCopyright
    </copyright>
 
-   <license url="http://www.example.com/license">
-      [Enter License Description here.]
-   </license>
-
    <url>
       <update label="%updateSiteName" url="http://rodin-b-sharp.sourceforge.net/updates"/>
    </url>
@@ -27,31 +23,8 @@
          id="ac.soton.eventb.emf.inclusion.feature"
          version="0.0.0"/>
 
-   <plugin
-         id="ac.soton.eventb.emf.inclusion.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+   <includes
+         id="ac.soton.eventb.emf.inclusion.source.feature"
+         version="0.0.0"/>
 
-   <plugin
-         id="ac.soton.eventb.emf.inclusion.edit.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="ac.soton.eventb.emf.inclusion.editor.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="ac.soton.eventb.emf.inclusion.generator.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
 </feature>
