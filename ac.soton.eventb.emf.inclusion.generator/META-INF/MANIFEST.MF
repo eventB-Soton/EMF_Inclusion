@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Event-B Inclusion Generator
 Bundle-SymbolicName: ac.soton.eventb.emf.inclusion.generator;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 0.1.0.release
 Bundle-Activator: ac.soton.eventb.emf.inclusion.generator.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,

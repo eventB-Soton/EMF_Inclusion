@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: ac.soton.eventb.emf.inclusion.editor;singleton:=true
-Bundle-Version: 1.0.0
+Bundle-Version: 0.1.0.release
 Bundle-ClassPath: .
 Bundle-Activator: ac.soton.eventb.emf.inclusion.presentation.InclusionEditorPlugin$Implementation
 Bundle-Vendor: %providerName
@@ -17,3 +17,4 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore.edit;visibility:=reexport,
  org.eventb.emf.core.edit;visibility:=reexport
 Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
