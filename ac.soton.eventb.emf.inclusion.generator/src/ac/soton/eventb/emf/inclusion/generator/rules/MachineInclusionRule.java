@@ -73,13 +73,6 @@ public class MachineInclusionRule extends AbstractRule implements IRule{
 		
 		Machine abstractFlattenedMachine = Make.machine(sourceMachine.getName(), "");//+"_flattened" //flattened suffix for coda
 		
-		//Clone the source machine
-		abstractFlattenedMachine.getRefinesNames().addAll(copyMachineRefinesNames(sourceMachine));
-		abstractFlattenedMachine.getSeesNames().addAll(copyMachineSeesNames(sourceMachine));
-		abstractFlattenedMachine.getVariables().addAll(copyVariables(sourceMachine, ""));
-		abstractFlattenedMachine.getInvariants().addAll(copyInvariants(sourceMachine, ""));
-		abstractFlattenedMachine.getEvents().addAll(copyEvents(sourceMachine));
-		
 		//Clone the included machine invariants and variables and apply prefixing 
 		// Synchronising the events is done as part of cloning the sourceMachine elements
 		
@@ -96,7 +89,14 @@ public class MachineInclusionRule extends AbstractRule implements IRule{
 				abstractFlattenedMachine.getInvariants().addAll(copyInvariants(abstractMch, ""));
 			}
 		}		
-			
+		
+		//Clone the source machine
+		abstractFlattenedMachine.getRefinesNames().addAll(copyMachineRefinesNames(sourceMachine));
+		abstractFlattenedMachine.getSeesNames().addAll(copyMachineSeesNames(sourceMachine));
+		abstractFlattenedMachine.getVariables().addAll(copyVariables(sourceMachine, ""));
+		abstractFlattenedMachine.getInvariants().addAll(copyInvariants(sourceMachine, ""));
+		abstractFlattenedMachine.getEvents().addAll(copyEvents(sourceMachine));
+		
 	    ret.add(Make.descriptor(proj, components, abstractFlattenedMachine, 1));
 		
 		return ret;
@@ -197,13 +197,7 @@ public class MachineInclusionRule extends AbstractRule implements IRule{
 		for (Event evt : sourceMachine.getEvents()){
 
 				Event newEvt = (Event) Make.event(evt.getName(),evt.isExtended(), evt.getConvergence(), evt.getRefinesNames(), evt.getComment());
-				
-				//getParameters
-            	newEvt.getParameters().addAll(copyParameters(evt, ""));
-            	newEvt.getActions().addAll(copyActions(sourceMachine, evt, ""));
-            	newEvt.getGuards().addAll(copyGuards(sourceMachine, evt, ""));
-            	newEvt.getWitnesses().addAll(copyWitnesses(sourceMachine, evt, ""));
-				
+								
             	// Check for synchronised events
 				if(!evt.getExtensions().isEmpty()){
 					for(AbstractExtension ext: evt.getExtensions()){
@@ -220,6 +214,13 @@ public class MachineInclusionRule extends AbstractRule implements IRule{
 			            	newEvt.getWitnesses().addAll(copyWitnesses(mch, synchEvt, pref));
 						}
 					}
+					
+					//get source event data
+	            	newEvt.getParameters().addAll(copyParameters(evt, ""));
+	            	newEvt.getActions().addAll(copyActions(sourceMachine, evt, ""));
+	            	newEvt.getGuards().addAll(copyGuards(sourceMachine, evt, ""));
+	            	newEvt.getWitnesses().addAll(copyWitnesses(sourceMachine, evt, ""));
+								
 				}
 				evtList.add(newEvt);
 			}
