@@ -70,6 +70,12 @@
                source_class="MachineInclusion"
                source_package="http://soton.ac.uk/models/eventb/inclusion/2017">
          </rule>
+         <rule
+               name="EventSynchronisationRule"
+               rule_class="ac.soton.eventb.emf.inclusion.generator.rules.EventSynchronisationRule"
+               source_class="EventSynchronisation"
+               source_package="http://soton.ac.uk/models/eventb/inclusion/2017">
+         </rule>
       </ruleset>
    </extension>
 
