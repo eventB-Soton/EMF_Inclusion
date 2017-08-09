@@ -26,20 +26,18 @@ import org.eventb.emf.core.machine.Invariant;
 
 
 /**
- * Machine Inclusion Translation Rule
  * <p>
- * 
+ * Implementation of {@link AbstractRule} for translating machine inclusion into flattened Event-B machine
  * </p>
  * 
  * @author Dana
- * @version
- * @see
- * @since
+ * @version 0.2
+ * @see TranslationDescriptor
+ * @since 0.1.0
  */
 public class MachineInclusionRule extends AbstractRule implements IRule{
 	protected static final EReference components = CorePackage.Literals.PROJECT__COMPONENTS;
-	boolean eventCopied = false;
-	int i = 0;
+	
 	@Override
 	public boolean enabled(final EObject sourceElement) throws Exception  {
 		if(sourceElement instanceof MachineInclusion)

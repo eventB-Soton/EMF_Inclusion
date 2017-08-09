@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2017 University of Southampton.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     University of Southampton - initial API and implementation
+ *******************************************************************************/
 package ac.soton.eventb.emf.inclusion.generator.rules;
 
 import java.util.ArrayList;
@@ -19,15 +29,14 @@ import ac.soton.eventb.emf.inclusion.EventSynchronisation;
 import ac.soton.eventb.emf.inclusion.generator.Make;
 
 /**
- * Event Synchronisation Translation Rule
  * <p>
- * 
+ * Implementation of {@link AbstractRule} for translating event synchronisation into flattened Event-B event.
  * </p>
  * 
  * @author Dana
- * @version
- * @see
- * @since
+ * @version 0.1
+ * @see TranslationDescriptor
+ * @since 0.2.0
  */
 
 public class EventSynchronisationRule extends AbstractRule implements IRule{
