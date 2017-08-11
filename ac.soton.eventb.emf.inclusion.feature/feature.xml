@@ -2,7 +2,7 @@
 <feature
       id="ac.soton.eventb.emf.inclusion.feature"
       label="%featureName"
-      version="0.1.0.release"
+      version="0.2.0.release"
       provider-name="%featureVendor"
       license-feature="org.rodinp.license"
       license-feature-version="1.0.0.release">
