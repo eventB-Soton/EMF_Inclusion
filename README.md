@@ -4,7 +4,7 @@ This feature provides the EMF Inclusion framework.
 
 Release history
 -------------
-### 0.2.0 ###
+### 0.2.0 Machine inclusion support ###
   - Event-B EMF Inclusion Editor (0.2.0): Fixed provider name
   - Event-B EMF Inclusion Generator (0.2.0):
     + Changed the implementation of Machine Inclusion translation rule
