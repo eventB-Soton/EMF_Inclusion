@@ -1,6 +1,6 @@
 EMF Inclusion Framework
 ========================================
-This feature provides the EMF Inclusion framework.
+This feature provides the EMF supporting component inclusion framework.
 
 Release history
 -------------
