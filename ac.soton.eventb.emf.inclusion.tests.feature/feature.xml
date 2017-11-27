@@ -3,18 +3,16 @@
       id="ac.soton.eventb.emf.inclusion.tests.feature"
       label="%featureName"
       version="0.2.1.qualifier"
-      provider-name="%featureVendor">
+      provider-name="%featureVendor"
+      license-feature="org.rodinp.license"
+      license-feature-version="1.0.0.release">
 
-   <description url="http://www.example.com/description">
-      [Enter Feature Description here.]
+   <description>
+      %featureDescription
    </description>
 
-   <copyright url="http://www.example.com/copyright">
-      [Enter Copyright Description here.]
+   <copyright>
+      %featureCopyright
    </copyright>
-
-   <license url="http://www.example.com/license">
-      [Enter License Description here.]
-   </license>
 
 </feature>
