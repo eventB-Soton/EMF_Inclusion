@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %Bundle-Name
+Bundle-SymbolicName: ac.soton.eventb.emf.inclusion.tests;singleton:=true
+Bundle-Version: 0.2.1.qualifier
+Bundle-ClassPath: .
+Bundle-Vendor: %Bundle-Vendor
+Export-Package: ac.soton.eventb.emf.inclusion.tests
+Require-Bundle: org.eclipse.core.runtime,
+ ac.soton.eventb.emf.inclusion;visibility:=reexport,
+ org.eclipse.emf.ecore;visibility:=reexport,
+ org.eventb.emf.core;visibility:=reexport,
+ org.eclipse.emf.ecore.xmi;visibility:=reexport,
+ org.junit;visibility:=reexport
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
