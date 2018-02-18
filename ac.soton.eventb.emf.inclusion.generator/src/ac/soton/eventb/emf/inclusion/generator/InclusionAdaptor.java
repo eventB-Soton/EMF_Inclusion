@@ -38,6 +38,7 @@ import org.eventb.emf.persistence.AttributeIdentifiers;
 
 import ac.soton.emf.translator.TranslationDescriptor;
 import ac.soton.emf.translator.configuration.IAdapter;
+import ac.soton.emf.translator.eventb.adapter.EventBTranslatorAdapter;
 
 
 /**
@@ -48,7 +49,7 @@ import ac.soton.emf.translator.configuration.IAdapter;
  *
  */
 
-public class InclusionAdaptor  implements IAdapter {
+public class InclusionAdaptor extends EventBTranslatorAdapter implements IAdapter {
 
 	/**
 	 * used to store the order position of extensions

@@ -27,4 +27,11 @@
          id="ac.soton.eventb.emf.inclusion.source.feature"
          version="0.0.0"/>
 
+   <includes
+         id="ac.soton.eventb.emf.inclusion.tests.feature"
+         version="0.0.0"/>
+
+   <includes
+         id="ac.soton.eventb.emf.inclusion.tests.source.feature"
+         version="0.0.0"/>
 </feature>
