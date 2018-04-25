@@ -40,7 +40,7 @@
       </category>
       <command
             categoryId="ac.soton.eventb.emf.inclusion.commands"
-            defaultHandler="ac.soton.emf.translator.handler.TranslateHandler"
+            defaultHandler="ac.soton.emf.translator.eventb.handler.EventBTranslateHandler"
             description="flatten included machines"        
              id="ac.soton.eventb.emf.inclusion.commands.include"
             name="Include Machines">
