@@ -1,9 +1,14 @@
 EMF Inclusion Framework
-========================================
+=======================
 This feature provides the EMF supporting component inclusion framework.
 
 Release history
--------------
+---------------
+### 0.2.1. Updated dependency to Event-B EMF Core ###
+- Event-B EMF Inclusion (0.2.1): Updated dependency on Event-B EMF Core to [5.0.0, 6.0.0)
+- Event-B EMF Inclusion Generator (0.2.1): Use adaptation of the EMF Transtor for Event-B.
+- Event-B EMF Inclusion feature: Modernised the release history.
+
 ### 0.2.0 Machine inclusion support ###
   - Event-B EMF Inclusion Editor (0.2.0): Fixed provider name
   - Event-B EMF Inclusion Generator (0.2.0):
