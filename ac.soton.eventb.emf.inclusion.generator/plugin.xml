@@ -51,7 +51,7 @@
    <extension
          point="ac.soton.emf.translators">
       <translator
-            adapter_class="ac.soton.eventb.emf.inclusion.generator.InclusionAdaptor"
+            adapter_class="ac.soton.emf.translator.eventb.adapter.EventBTranslatorAdapter"
             command_id="ac.soton.eventb.emf.inclusion.commands.include"
             name="Inclusion"
             root_source_class="Machine"
