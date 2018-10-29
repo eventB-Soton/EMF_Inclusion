@@ -14,3 +14,4 @@ Export-Package: ac.soton.eventb.emf.inclusion,
  ac.soton.eventb.emf.inclusion.impl,
  ac.soton.eventb.emf.inclusion.util
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Automatic-Module-Name: ac.soton.eventb.emf.inclusion
