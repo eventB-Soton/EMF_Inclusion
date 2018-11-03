@@ -14,7 +14,7 @@ Release history
   + Do not re-export required plugins.
 - Event-B EMF Inclusion Editor: REMOVED
 - Event-B EMF Inclusion Generator (0.2.1):
-  + Use adaptation of the EMF Transtor for Event-B.
+  + Use adaptation of the EMF Translator for Event-B.
   + Minor internal changes (to be compatible with Java 1.9)
 - Event-B EMF Inclusion feature: Modernised the release history.
 
