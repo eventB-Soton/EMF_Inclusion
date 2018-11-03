@@ -2,7 +2,7 @@
 <feature
       id="ac.soton.eventb.emf.inclusion.tests.feature"
       label="%featureName"
-      version="0.2.1.qualifier"
+      version="0.0.1.qualifier"
       provider-name="%featureVendor"
       license-feature="org.rodinp.license"
       license-feature-version="1.0.0.release">
@@ -17,11 +17,11 @@
 
    <requires>
       <import plugin="org.eclipse.core.runtime" version="3.12.0" match="compatible"/>
-      <import plugin="ac.soton.eventb.emf.inclusion" version="0.1.1" match="compatible"/>
       <import plugin="org.eclipse.emf.ecore" version="2.12.0" match="compatible"/>
       <import plugin="org.eventb.emf.core" version="5.0.0" match="compatible"/>
       <import plugin="org.eclipse.emf.ecore.xmi" version="2.12.0" match="compatible"/>
       <import plugin="org.junit" version="4.12.0" match="compatible"/>
+      <import plugin="ac.soton.eventb.emf.inclusion" version="1.0.0" match="compatible"/>
    </requires>
 
    <plugin

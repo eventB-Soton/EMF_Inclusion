@@ -4,9 +4,18 @@ This feature provides the EMF supporting component inclusion framework.
 
 Release history
 ---------------
-### 0.2.1. Updated dependency to Event-B EMF Core ###
-- Event-B EMF Inclusion (0.2.1): Updated dependency on Event-B EMF Core to [5.0.0, 6.0.0)
-- Event-B EMF Inclusion Generator (0.2.1): Use adaptation of the EMF Transtor for Event-B.
+### 1.0.0. Updated dependency to Event-B EMF Core ###
+- Event-B EMF Inclusion (1.0.0):
+  + Updated dependency on Event-B EMF Core to [5.0.0, 6.0.0)
+  + Minor internal changes (to be compatible with Java 1.9)
+  + Do not re-export required plugins.
+- Event-B EMF Inclusion Edit (1.0.0):
+  + Minor internal changes (to be compatible with Java 1.9)
+  + Do not re-export required plugins.
+- Event-B EMF Inclusion Editor: REMOVED
+- Event-B EMF Inclusion Generator (0.2.1):
+  + Use adaptation of the EMF Transtor for Event-B.
+  + Minor internal changes (to be compatible with Java 1.9)
 - Event-B EMF Inclusion feature: Modernised the release history.
 
 ### 0.2.0 Machine inclusion support ###
