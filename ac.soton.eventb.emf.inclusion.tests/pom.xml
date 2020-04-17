@@ -1,0 +1,45 @@
+<project>
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <!-- REQUIRED: Group ID is the feature ID -->
+    <groupId>ac.soton.eventb.emf.inclusion</groupId>
+    <!-- Name of the release engineering artifact -->
+    <artifactId>releng</artifactId>
+    <!-- REQUIRED: Version number of the release engineering artifact -->
+    <version>2.0.0-SNAPSHOT</version>
+    <!-- REQUIRED: Relative path to the release engineering artifact -->
+    <relativePath>../ac.soton.eventb.emf.inclusion.releng</relativePath>
+  </parent>
+
+  <!-- REQUIRED: Group ID is the feature ID -->
+  <groupId>ac.soton.eventb.emf.inclusion</groupId>
+  <!-- REQUIRED: Artifact ID of the test plug-in. Must be the same as the project ID -->
+  <artifactId>ac.soton.eventb.emf.inclusion.tests</artifactId>
+  <!-- REQUIRED: Version the test plug-in. Must be the same as the project version -->
+  <version>0.0.2-SNAPSHOT</version>
+  <!-- REQUIRED: Name and description of this this root build -->
+  <name>EMF Inclusion Test Plugin</name>
+  <description>Unit tests for EMF Inclusion</description>
+
+  <packaging>eclipse-test-plugin</packaging>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-surefire-plugin</artifactId>
+	<version>${tycho.version}</version>
+        <configuration>
+          <includes>
+            <!-- Optional: By default: Test*, *Test, and *Tests files are included -->
+          </includes>
+          <excludes>
+            <!-- Optional: pattern for excluding files -->
+          </excludes>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
