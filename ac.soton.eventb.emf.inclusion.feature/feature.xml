@@ -29,6 +29,8 @@
       <import plugin="org.eclipse.ui" version="3.109.0" match="compatible"/>
       <import plugin="ac.soton.emf.translator" version="3.0.0" match="compatible"/>
       <import plugin="org.eclipse.emf.transaction" version="1.8.0" match="compatible"/>
+      <import plugin="ac.soton.eventb.emf.core.extension.persistence" version="2.2.0" match="compatible"/>
+      <import plugin="ac.soton.emf.translator.eventb" version="0.1.0" match="compatible"/>
    </requires>
 
    <plugin
