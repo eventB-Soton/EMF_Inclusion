@@ -10,11 +10,11 @@
  */
 package ac.soton.eventb.emf.inclusion.tests;
 
+import org.junit.Test;
+
 import ac.soton.eventb.emf.inclusion.InclusionFactory;
 import ac.soton.eventb.emf.inclusion.MachineInclusion;
-
 import junit.framework.TestCase;
-
 import junit.textui.TestRunner;
 
 /**
@@ -94,4 +94,11 @@ public class MachineInclusionTest extends TestCase {
 		setFixture(null);
 	}
 
+	/**
+	 * @since 0.1
+	 */
+	@Test
+	public void testMachineInclusion() {
+		// Ignore at the moment
+	}
 } //MachineInclusionTest
