@@ -10,6 +10,8 @@
  */
 package ac.soton.eventb.emf.inclusion.tests;
 
+import org.junit.Test;
+
 import ac.soton.eventb.emf.inclusion.EventSynchronisation;
 import ac.soton.eventb.emf.inclusion.InclusionFactory;
 
@@ -92,6 +94,14 @@ public class EventSynchronisationTest extends TestCase {
 	@Override
 	protected void tearDown() throws Exception {
 		setFixture(null);
+	}
+
+	/**
+	 * @since 0.1
+	 */
+	@Test
+	public void testEventSynchronisation() {
+		// Ignore at the moment
 	}
 
 } //EventSynchronisationTest

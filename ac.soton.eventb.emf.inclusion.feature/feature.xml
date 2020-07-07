@@ -2,7 +2,7 @@
 <feature
       id="ac.soton.eventb.emf.inclusion.feature"
       label="%featureName"
-      version="2.0.0.qualifier"
+      version="2.0.0.release"
       provider-name="%featureVendor"
       license-feature="org.rodinp.licence"
       license-feature-version="1.0.0.release">
@@ -16,7 +16,7 @@
    </copyright>
 
    <url>
-      <update label="%updateSiteName" url="http://rodin-b-sharp.sourceforge.net/updates"/>
+      <update label="%updateSiteName" url="https://eventB-soton.github.io/updateSite"/>
    </url>
 
    <requires>

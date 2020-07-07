@@ -2,7 +2,7 @@
 <feature
       id="ac.soton.eventb.emf.inclusion.tests.feature"
       label="%featureName"
-      version="0.0.2.qualifier"
+      version="0.0.2.release"
       provider-name="%featureVendor"
       license-feature="org.rodinp.licence"
       license-feature-version="1.0.0.release">
@@ -14,6 +14,10 @@
    <copyright>
       %featureCopyright
    </copyright>
+
+   <url>
+      <update label="%updateSiteName" url="https://eventB-soton.github.io/updateSite"/>
+   </url>
 
    <requires>
       <import plugin="org.eclipse.core.runtime" version="3.12.0" match="compatible"/>
