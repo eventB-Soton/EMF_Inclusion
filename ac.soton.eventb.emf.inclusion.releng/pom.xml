@@ -114,7 +114,7 @@
 	<plugin>
 	  <groupId>org.apache.maven.plugins</groupId>
 	  <artifactId>maven-antrun-plugin</artifactId>
-	  <version>1.7</version>
+	  <version>${maven-antrun-plugin-version}</version>
 	</plugin>
 	<!-- Deactivate the Maven resource plug-in -->
 	<plugin>
