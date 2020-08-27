@@ -19,8 +19,8 @@
   <!-- REQUIRED: Version the test plug-in. Must be the same as the project version -->
   <version>0.1.0.release</version>
   <!-- REQUIRED: Name and description of this this root build -->
-  <name>EMF Inclusion Test Plugin</name>
-  <description>Unit tests for EMF Inclusion</description>
+  <name>Event-B EMF Inclusion (Tests) Plug-in</name>
+  <description>Unit tests for Event-B EMF Inclusion</description>
 
   <packaging>eclipse-test-plugin</packaging>
 
@@ -29,7 +29,7 @@
       <plugin>
         <groupId>org.eclipse.tycho</groupId>
         <artifactId>tycho-surefire-plugin</artifactId>
-	<version>${tycho.version}</version>
+	<version>${tycho-version}</version>
         <configuration>
           <includes>
             <!-- Optional: By default: Test*, *Test, and *Tests files are included -->

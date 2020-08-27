@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Event-B Inclusion Generator
+Bundle-Name: %Bundle-Name
 Bundle-SymbolicName: ac.soton.eventb.emf.inclusion.generator;singleton:=true
 Bundle-Version: 0.2.2.release
 Bundle-Activator: ac.soton.eventb.emf.inclusion.generator.Activator
@@ -12,5 +12,5 @@ Require-Bundle: org.eclipse.ui;bundle-version="[3.109.0,4.0.0)",
  ac.soton.emf.translator.eventb;bundle-version="[0.1.0,1.0.0)"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
-Bundle-Vendor: University of Southampton
+Bundle-Vendor: %Bundle-Vendor
 Automatic-Module-Name: ac.soton.eventb.emf.inclusion.generator

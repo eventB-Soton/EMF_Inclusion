@@ -5,8 +5,8 @@
   <!-- Name of this artifact -->
   <artifactId>root</artifactId>
   <!-- REQUIRED: Name and description of this this root build -->
-  <name>EMF Inclusion Root</name>
-  <description>Root artifact for EMF Inclusion</description>
+  <name>Event-B EMF Inclusion Root Module</name>
+  <description>Root artifact for Event-B EMF Inclusion</description>
   <!-- REQUIRED: Version number (using semantic versioning) -->
   <version>2.0.0.release</version>
   <packaging>pom</packaging>
