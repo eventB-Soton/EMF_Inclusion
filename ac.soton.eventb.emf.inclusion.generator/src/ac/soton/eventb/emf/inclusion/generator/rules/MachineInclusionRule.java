@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 University of Southampton.
+ * Copyright (c) 2017, 2021 University of Southampton.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -66,9 +66,6 @@ public class MachineInclusionRule extends AbstractRule implements IRule{
 			sourceMachine.getInvariants().addAll(0,copyInvariants(abstractMch, ""));
 		}
 			
-        // No need to find the project, using null will add it to the current project
-	    ret.add(Make.descriptor(null, components,sourceMachine, 1));
-		
 		return ret;	
 	}
 	
