@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %Bundle-Name
 Bundle-SymbolicName: ac.soton.eventb.emf.inclusion.generator;singleton:=true
-Bundle-Version: 0.2.2.release
+Bundle-Version: 0.2.3.qualifier
 Bundle-Activator: ac.soton.eventb.emf.inclusion.generator.Activator
 Require-Bundle: org.eclipse.ui;bundle-version="[3.109.0,4.0.0)",
  ac.soton.emf.translator;bundle-version="[3.0.0,4.0.0)",
