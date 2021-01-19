@@ -1,3 +1,16 @@
+<!--
+    Copyright (c) 2020, 2021 University of Southampton.
+   
+    This program and the accompanying materials
+    are made available under the terms of the Eclipse Public License 2.0
+    which accompanies this distribution, and is available at
+    https://www.eclipse.org/legal/epl-2.0/
+   
+    SPDX-License-Identifier: EPL-2.0
+   
+    Contributors:
+        University of Southampton - initial API and implementation
+ -->
 <project>
   <modelVersion>4.0.0</modelVersion>
 
@@ -7,7 +20,7 @@
     <!-- Name of the release engineering artifact -->
     <artifactId>releng</artifactId>
     <!-- REQUIRED: Version number of the release engineering artifact -->
-    <version>2.0.0.release</version>
+    <version>2.0.1.release</version>
     <!-- REQUIRED: Relative path to the release engineering artifact -->
     <relativePath>../ac.soton.eventb.emf.inclusion.releng</relativePath>
   </parent>
@@ -17,10 +30,10 @@
   <!-- REQUIRED: Artifact ID of the test plug-in. Must be the same as the project ID -->
   <artifactId>ac.soton.eventb.emf.inclusion.tests</artifactId>
   <!-- REQUIRED: Version the test plug-in. Must be the same as the project version -->
-  <version>0.1.0.release</version>
+  <version>0.1.1-SNAPSHOT</version>
   <!-- REQUIRED: Name and description of this this root build -->
-  <name>EMF Inclusion Test Plugin</name>
-  <description>Unit tests for EMF Inclusion</description>
+  <name>Event-B EMF Inclusion (Tests) Plug-in</name>
+  <description>Unit tests for Event-B EMF Inclusion</description>
 
   <packaging>eclipse-test-plugin</packaging>
 
@@ -29,7 +42,7 @@
       <plugin>
         <groupId>org.eclipse.tycho</groupId>
         <artifactId>tycho-surefire-plugin</artifactId>
-	<version>${tycho.version}</version>
+	<version>${tycho-version}</version>
         <configuration>
           <includes>
             <!-- Optional: By default: Test*, *Test, and *Tests files are included -->
