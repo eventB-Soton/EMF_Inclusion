@@ -30,7 +30,7 @@
   <!-- REQUIRED: Artifact ID of the test plug-in. Must be the same as the project ID -->
   <artifactId>ac.soton.eventb.emf.inclusion.tests</artifactId>
   <!-- REQUIRED: Version the test plug-in. Must be the same as the project version -->
-  <version>0.1.1-SNAPSHOT</version>
+  <version>0.1.1.release</version>
   <!-- REQUIRED: Name and description of this this root build -->
   <name>Event-B EMF Inclusion (Tests) Plug-in</name>
   <description>Unit tests for Event-B EMF Inclusion</description>
