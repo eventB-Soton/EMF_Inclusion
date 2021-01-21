@@ -15,7 +15,7 @@
 <feature
       id="ac.soton.eventb.emf.inclusion.sdk"
       label="%featureName"
-      version="2.0.2.qualifier"
+      version="2.0.2.release"
       provider-name="%featureVendor"
       license-feature="org.rodinp.licence"
       license-feature-version="1.0.0.release">
