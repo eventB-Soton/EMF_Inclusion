@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %Bundle-Name
 Bundle-SymbolicName: ac.soton.eventb.emf.inclusion;singleton:=true
-Bundle-Version: 2.0.1.release
+Bundle-Version: 3.0.0.qualifier
 Bundle-ClassPath: .
 Require-Bundle: org.eclipse.emf.ecore;bundle-version="[2.10.2,3.0.0)",
  org.eventb.emf.core;bundle-version="[5.0.0,6.0.0)"
@@ -11,5 +11,5 @@ Bundle-Vendor: %Bundle-Vendor
 Export-Package: ac.soton.eventb.emf.inclusion,
  ac.soton.eventb.emf.inclusion.impl,
  ac.soton.eventb.emf.inclusion.util
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Automatic-Module-Name: ac.soton.eventb.emf.inclusion
