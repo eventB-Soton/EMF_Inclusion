@@ -26,6 +26,7 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -179,16 +180,26 @@ public class EventSynchronisationItemProvider
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CorePackage.Literals.EVENT_BELEMENT__EXTENSIONS,
-				 InclusionFactory.eINSTANCE.createMachineInclusion()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(CorePackage.Literals.EVENT_BELEMENT__EXTENSIONS,
-				 InclusionFactory.eINSTANCE.createEventSynchronisation()));
+		
+			
+		if (object instanceof EObject && 
+			InclusionPackage.Literals.MACHINE_INCLUSION.getEAnnotation("org.eventb.emf.core.extendedMetaClasses") == null  || 
+			InclusionPackage.Literals.MACHINE_INCLUSION.getEAnnotation("org.eventb.emf.core.extendedMetaClasses").getReferences().contains(((EObject)object).eClass()))
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(CorePackage.Literals.EVENT_BELEMENT__EXTENSIONS,
+				 	InclusionFactory.eINSTANCE.createMachineInclusion()));
+		
+			
+		if (object instanceof EObject && 
+			InclusionPackage.Literals.EVENT_SYNCHRONISATION.getEAnnotation("org.eventb.emf.core.extendedMetaClasses") == null  || 
+			InclusionPackage.Literals.EVENT_SYNCHRONISATION.getEAnnotation("org.eventb.emf.core.extendedMetaClasses").getReferences().contains(((EObject)object).eClass()))
+		
+			newChildDescriptors.add
+				(createChildParameter
+					(CorePackage.Literals.EVENT_BELEMENT__EXTENSIONS,
+				 	InclusionFactory.eINSTANCE.createEventSynchronisation()));
 	}
 
 }

@@ -152,6 +152,17 @@ public interface InclusionPackage extends EPackage {
 	int MACHINE_INCLUSION__INTERNAL_ID = CorePackage.ABSTRACT_EXTENSION__INTERNAL_ID;
 
 	/**
+	 * The feature id for the '<em><b>Ordered Children</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * @since 3.0
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE_INCLUSION__ORDERED_CHILDREN = CorePackage.ABSTRACT_EXTENSION__ORDERED_CHILDREN;
+
+
+	/**
 	 * The feature id for the '<em><b>Extension Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -268,6 +279,17 @@ public interface InclusionPackage extends EPackage {
 	 * @ordered
 	 */
 	int EVENT_SYNCHRONISATION__INTERNAL_ID = CorePackage.ABSTRACT_EXTENSION__INTERNAL_ID;
+
+	/**
+	 * The feature id for the '<em><b>Ordered Children</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * @since 3.0
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVENT_SYNCHRONISATION__ORDERED_CHILDREN = CorePackage.ABSTRACT_EXTENSION__ORDERED_CHILDREN;
+
 
 	/**
 	 * The feature id for the '<em><b>Extension Id</b></em>' attribute.

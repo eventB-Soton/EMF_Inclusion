@@ -69,7 +69,7 @@
             command_id="ac.soton.eventb.emf.inclusion.commands.include"
             name="Inclusion"
             root_source_class="Machine"
-            source_package="http://emf.eventb.org/models/core/machine/2014"
+            source_package="http://emf.eventb.org/models/core/machine/2022"
             translator_id="ac.soton.eventb.emf.inclusion.translator">
       </translator>
    </extension>
