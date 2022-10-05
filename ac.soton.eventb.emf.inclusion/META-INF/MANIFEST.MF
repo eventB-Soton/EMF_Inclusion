@@ -5,7 +5,7 @@ Bundle-SymbolicName: ac.soton.eventb.emf.inclusion;singleton:=true
 Bundle-Version: 3.0.0.qualifier
 Bundle-ClassPath: .
 Require-Bundle: org.eclipse.emf.ecore;bundle-version="[2.10.2,3.0.0)",
- org.eventb.emf.core;bundle-version="[5.0.0,6.0.0)"
+ org.eventb.emf.core;bundle-version="[6.0.0,7.0.0)"
 Bundle-ActivationPolicy: lazy
 Bundle-Vendor: %Bundle-Vendor
 Export-Package: ac.soton.eventb.emf.inclusion,
