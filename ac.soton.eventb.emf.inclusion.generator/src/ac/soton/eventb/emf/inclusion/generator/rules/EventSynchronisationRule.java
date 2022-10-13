@@ -101,7 +101,8 @@ public class EventSynchronisationRule extends AbstractEventBGeneratorRule implem
 				name = par.getName();
 
 			Parameter newPar = (Parameter) Make.parameter(name, par.getComment());
-			ret.add(Make.descriptor(targetEvt, orderedChildren, newPar, null, 0));
+			// @TODO htson This is probably not right source for now
+			ret.add(Make.descriptor(targetEvt, orderedChildren, newPar, null, 0, targetEvt));
 		}
 		return ret;
 	}
@@ -121,7 +122,8 @@ public class EventSynchronisationRule extends AbstractEventBGeneratorRule implem
 			}
 			Action newAct = (Action) Make.action(name, exp, act.getComment());
 
-			ret.add(Make.descriptor(targetEvt, orderedChildren, newAct, null, 0));
+			// @TODO htson This is probably not right source for now
+			ret.add(Make.descriptor(targetEvt, orderedChildren, newAct, null, 0, sourceMachine));
 		}
 		return ret;
 	}
@@ -140,7 +142,8 @@ public class EventSynchronisationRule extends AbstractEventBGeneratorRule implem
 				predicate = grd.getPredicate();
 			}
 			Guard newGrd = (Guard) Make.guard(name, grd.isTheorem(), predicate, grd.getComment());
-			ret.add(Make.descriptor(targetEvt, orderedChildren, newGrd, null, 0));
+			// @TODO htson This is probably not right source for now
+			ret.add(Make.descriptor(targetEvt, orderedChildren, newGrd, null, 0, sourceEvt));
 		}
 		return ret;
 	}
@@ -160,7 +163,8 @@ public class EventSynchronisationRule extends AbstractEventBGeneratorRule implem
 			}
 
 			Witness newWit = (Witness) Make.witness(name, predicate, wit.getComment());
-			ret.add(Make.descriptor(targetEvt, orderedChildren, newWit, null, 0));
+			// @TODO htson This is probably not right source for now
+			ret.add(Make.descriptor(targetEvt, orderedChildren, newWit, null, 0, sourceEvt));
 		}
 		return ret;
 	}
