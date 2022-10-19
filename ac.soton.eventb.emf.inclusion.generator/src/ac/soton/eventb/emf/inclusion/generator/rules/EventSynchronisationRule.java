@@ -47,13 +47,15 @@ import ac.soton.eventb.emf.inclusion.EventSynchronisation;
 public class EventSynchronisationRule extends AbstractEventBGeneratorRule implements IRule {
 //	protected static final EReference events = MachinePackage.Literals.MACHINE__EVENTS;
 
+	private EventSynchronisation synchronisation;
+	
 	@Override
 	public boolean enabled(final EObject sourceElement) throws Exception {
-		if (sourceElement instanceof EventSynchronisation)
+		if (sourceElement instanceof EventSynchronisation) {
+			synchronisation = (EventSynchronisation) sourceElement;
 			return true;
-
-		else
-			return false;
+		}
+		return false;
 	}
 
 	@Override
@@ -101,8 +103,7 @@ public class EventSynchronisationRule extends AbstractEventBGeneratorRule implem
 				name = par.getName();
 
 			Parameter newPar = (Parameter) Make.parameter(name, par.getComment());
-			// @TODO htson This is probably not right source for now
-			ret.add(Make.descriptor(targetEvt, orderedChildren, newPar, null, 0, targetEvt));
+			ret.add(Make.descriptor(targetEvt, orderedChildren, newPar, synchronisation, 0, synchronisation));
 		}
 		return ret;
 	}
@@ -122,8 +123,7 @@ public class EventSynchronisationRule extends AbstractEventBGeneratorRule implem
 			}
 			Action newAct = (Action) Make.action(name, exp, act.getComment());
 
-			// @TODO htson This is probably not right source for now
-			ret.add(Make.descriptor(targetEvt, orderedChildren, newAct, null, 0, sourceMachine));
+			ret.add(Make.descriptor(targetEvt, orderedChildren, newAct, synchronisation, 0, synchronisation));
 		}
 		return ret;
 	}
@@ -142,8 +142,7 @@ public class EventSynchronisationRule extends AbstractEventBGeneratorRule implem
 				predicate = grd.getPredicate();
 			}
 			Guard newGrd = (Guard) Make.guard(name, grd.isTheorem(), predicate, grd.getComment());
-			// @TODO htson This is probably not right source for now
-			ret.add(Make.descriptor(targetEvt, orderedChildren, newGrd, null, 0, sourceEvt));
+			ret.add(Make.descriptor(targetEvt, orderedChildren, newGrd, synchronisation, 0, synchronisation));
 		}
 		return ret;
 	}
@@ -163,7 +162,6 @@ public class EventSynchronisationRule extends AbstractEventBGeneratorRule implem
 			}
 
 			Witness newWit = (Witness) Make.witness(name, predicate, wit.getComment());
-			// @TODO htson This is probably not right source for now
 			ret.add(Make.descriptor(targetEvt, orderedChildren, newWit, null, 0, sourceEvt));
 		}
 		return ret;
