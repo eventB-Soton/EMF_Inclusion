@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.eventb.emf.core.CorePackage;
@@ -101,6 +102,7 @@ public class InclusionPackageImpl extends EPackageImpl implements InclusionPacka
 		isInited = true;
 
 		// Initialize simple dependencies
+		EcorePackage.eINSTANCE.eClass();
 		CorePackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
@@ -286,7 +288,7 @@ public class InclusionPackageImpl extends EPackageImpl implements InclusionPacka
 		   new String[] {
 		   },
 		   new URI[] {
-			 URI.createURI(CorePackage.eNS_URI).appendFragment("//machine/Machine")
+			 URI.createURI(MachinePackage.eNS_URI).appendFragment("//Machine")
 		   });		
 		addAnnotation
 		  (eventSynchronisationEClass, 
@@ -294,7 +296,7 @@ public class InclusionPackageImpl extends EPackageImpl implements InclusionPacka
 		   new String[] {
 		   },
 		   new URI[] {
-			 URI.createURI(CorePackage.eNS_URI).appendFragment("//machine/Event")
+			 URI.createURI(MachinePackage.eNS_URI).appendFragment("//Event")
 		   });
 	}
 

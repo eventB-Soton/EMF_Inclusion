@@ -15,17 +15,20 @@ package ac.soton.eventb.emf.inclusion.generator.rules;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
+import org.eventb.emf.core.CorePackage;
+import org.eventb.emf.core.machine.Invariant;
+import org.eventb.emf.core.machine.Machine;
+import org.eventb.emf.core.machine.Variable;
+
 import ac.soton.emf.translator.TranslationDescriptor;
 import ac.soton.emf.translator.configuration.AbstractRule;
 import ac.soton.emf.translator.configuration.IRule;
-import org.eventb.emf.core.CorePackage;
-import ac.soton.eventb.emf.inclusion.generator.Make;
+import ac.soton.emf.translator.eventb.rules.AbstractEventBGeneratorRule;
+import ac.soton.emf.translator.eventb.utils.Make;
 import ac.soton.eventb.emf.inclusion.MachineInclusion;
-import org.eventb.emf.core.machine.Machine;
-import org.eventb.emf.core.machine.Variable;
-import org.eventb.emf.core.machine.Invariant;
 
 
 /**
@@ -38,17 +41,16 @@ import org.eventb.emf.core.machine.Invariant;
  * @see TranslationDescriptor
  * @since 0.1.0
  */
-public class MachineInclusionRule extends AbstractRule implements IRule{
+public class MachineInclusionRule extends AbstractEventBGeneratorRule implements IRule {
 	protected static final EReference components = CorePackage.Literals.PROJECT__COMPONENTS;
 	
+
 	@Override
 	public boolean enabled(final EObject sourceElement) throws Exception  {
-		if(sourceElement instanceof MachineInclusion)
+		if(sourceElement instanceof MachineInclusion) {
 			return true;
-		
-			
-		else
-			return false;
+		}
+		return false;
 	}
 
 	@Override
@@ -56,17 +58,24 @@ public class MachineInclusionRule extends AbstractRule implements IRule{
 		List<TranslationDescriptor> ret = new ArrayList<TranslationDescriptor>();
 	    Machine sourceMachine = (Machine)sourceElement.eContainer(); 
 		
-		MachineInclusion mch = (MachineInclusion) sourceElement;
-		Machine abstractMch = mch.getAbstractMachine();
-		if(abstractMch != null && !mch.getPrefixes().isEmpty()){
-			for(String pref: mch.getPrefixes()){
-				sourceMachine.getVariables().addAll(0,copyVariables(abstractMch, pref));
-				sourceMachine.getInvariants().addAll(0,copyInvariants(abstractMch, pref));
+		MachineInclusion inclusion = (MachineInclusion) sourceElement;
+		Machine abstractMch = inclusion.getAbstractMachine();
+
+		// Do nothing if there are no abstract machine
+		if (abstractMch == null)
+			return ret;
+
+		if(!inclusion.getPrefixes().isEmpty()) {
+			// If there are prefixes then generate variables and invariants using the prefixes.
+			for(String pref: inclusion.getPrefixes()){
+				ret.addAll(0,copyVariables(inclusion, abstractMch, sourceMachine, pref));
+				ret.addAll(0,copyInvariants(inclusion, abstractMch, sourceMachine, pref));
 			}
 		}
-		else if(abstractMch != null && mch.getPrefixes().isEmpty()){
-			sourceMachine.getVariables().addAll(0,copyVariables(abstractMch, ""));
-			sourceMachine.getInvariants().addAll(0,copyInvariants(abstractMch, ""));
+		else {
+			// If there are no prefixes then generate variables and invariants without the prefix.
+			ret.addAll(0,copyVariables(inclusion, abstractMch, sourceMachine, ""));
+			ret.addAll(0,copyInvariants(inclusion, abstractMch, sourceMachine, ""));
 		}
 			
 		return ret;	
@@ -88,37 +97,36 @@ public class MachineInclusionRule extends AbstractRule implements IRule{
     //****************************************************************
 		
 
-	private List<Variable> copyVariables(Machine mch, String prefix){
-		ArrayList <Variable> varList = new ArrayList<Variable>();
+	private List<TranslationDescriptor> copyVariables(MachineInclusion inclusion, Machine fromMch, Machine toMch, String prefix){
+		List<TranslationDescriptor> ret = new ArrayList<TranslationDescriptor>();
 		
-		for(Variable var : mch.getVariables()){
+		for(Variable var : fromMch.getVariables()){
 			Variable newVar;
 			if(prefix != "")
 				newVar = Make.variable(prefix + "_" + var.getName(), var.getComment());
 			else
 				newVar = Make.variable(var.getName(), var.getComment());
-			varList.add(newVar);
+			ret.add(Make.descriptor(toMch, orderedChildren, newVar, inclusion, 0, inclusion));
 		}		
-		return varList;		
+		return ret;		
 	}
 	
-	private List<Invariant> copyInvariants(Machine mch, String prefix){
-		ArrayList <Invariant> invList = new ArrayList<Invariant>();
+	private List<TranslationDescriptor> copyInvariants(MachineInclusion inclusion, Machine fromMch, Machine toMch, String prefix){
+		List<TranslationDescriptor> ret = new ArrayList<TranslationDescriptor>();
 		
-		for(Invariant inv : mch.getInvariants()){
+		for(Invariant inv : fromMch.getInvariants()){
 			Invariant newInv;
 			if(prefix != ""){
-				
-				String pred = renameInvariant(mch, inv.getPredicate(), prefix);
+				String pred = renameInvariant(fromMch, inv.getPredicate(), prefix);
 				newInv= Make.invariant(prefix + "_" + inv.getName(), inv.isTheorem(),pred,inv.getComment());
 			}
 				
 			else
 				newInv = Make.invariant(inv.getName(), inv.isTheorem(), inv.getPredicate(),inv.getComment());
 			
-			invList.add(newInv);
+			ret.add(Make.descriptor(toMch, orderedChildren, newInv, inclusion, 0, inclusion));
 		}		
-		return invList;		
+		return ret;		
 	}
 	private String renameInvariant(Machine sourceMachine, String predicate, String prefix) {
 		String newPredicate = predicate;

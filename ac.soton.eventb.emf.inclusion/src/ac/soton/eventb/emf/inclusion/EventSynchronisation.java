@@ -33,7 +33,7 @@ import org.eventb.emf.core.machine.Event;
  * </p>
  *
  * @see ac.soton.eventb.emf.inclusion.InclusionPackage#getEventSynchronisation()
- * @model
+ * @model annotation="org.eventb.emf.core.extendedMetaClasses"
  * @generated
  */
 public interface EventSynchronisation extends AbstractExtension {

@@ -36,7 +36,7 @@ import org.eventb.emf.core.machine.Machine;
  * </p>
  *
  * @see ac.soton.eventb.emf.inclusion.InclusionPackage#getMachineInclusion()
- * @model
+ * @model annotation="org.eventb.emf.core.extendedMetaClasses"
  * @generated
  */
 public interface MachineInclusion extends AbstractExtension {
