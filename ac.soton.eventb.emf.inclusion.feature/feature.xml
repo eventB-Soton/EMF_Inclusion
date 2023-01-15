@@ -33,10 +33,11 @@
    </url>
 
    <requires>
-      <import plugin="org.eclipse.emf.ecore" version="2.10.2" match="compatible"/>
+      <import plugin="org.eclipse.emf.ecore" version="2.25.0" match="compatible"/>
       <import plugin="org.eventb.emf.core" version="6.0.0" match="compatible"/>
       <import plugin="org.eclipse.core.runtime" version="3.13.0" match="compatible"/>
       <import plugin="ac.soton.eventb.emf.inclusion" version="3.0.0" match="compatible"/>
+      <import plugin="org.eclipse.emf.edit" version="2.16.0" match="compatible"/>
       <import plugin="org.eclipse.emf.ecore.edit" version="2.9.0" match="compatible"/>
       <import plugin="org.eventb.emf.core.edit" version="3.0.0" match="compatible"/>
       <import plugin="ac.soton.eventb.emf.core.extension.persistence" version="2.2.0" match="compatible"/>
@@ -44,8 +45,6 @@
       <import plugin="ac.soton.emf.translator" version="4.0.0" match="compatible"/>
       <import plugin="org.eclipse.emf.transaction" version="1.8.0" match="compatible"/>
       <import plugin="ac.soton.emf.translator.eventb" version="1.0.0" match="compatible"/>
-      <import plugin="org.eclipse.emf.edit" version="2.16.0" match="compatible"/>
-      <import plugin="org.eclipse.emf.ecore" version="2.25.0" match="compatible"/>
    </requires>
 
    <plugin
